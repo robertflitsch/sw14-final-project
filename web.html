@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <title>Link Web</title>
+    <!- Override the title css and make it wider ->
+    <style>
+        .title
+        {
+        	margin-left: 250px;
+        	width: 300px;
+        }
+    </style>
+
+    <!- JavaScript functionality to create lines ->
+    <!-- Borrowed from "http://www.gapjumper.com/research/lines.html" -->
+	<script type="text/javascript">
+
+		var isIE = navigator.userAgent.indexOf("MSIE") > -1;
+
+		window.onload = init;
+
+        // creates black line
+		function createLine(x1, y1, x2, y2)
+		{
+			if (x2 < x1)
+			{
+				var temp = x1;
+				x1 = x2;
+				x2 = temp;
+				temp = y1;
+				y1 = y2;
+				y2 = temp;
+			}
+			var line = document.createElement("div");
+			line.className = "line";
+			var length = Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
+			line.style.width = length + "px";
+
+			if (isIE)
+			{
+				line.style.top = (y2 > y1) ? y1 + "px" : y2 + "px";
+				line.style.left = x1 + "px";
+				var nCos = (x2-x1)/length;
+				var nSin = (y2-y1)/length;
+				line.style.filter = "progid:DXImageTransform.Microsoft." +
+				    "Matrix(sizingMethod='auto expand', M11=" + nCos + ", M12=" 
+				    + -1*nSin + ", M21=" + nSin + ", M22=" + nCos + ")";
+			}
+			else
+			{
+				var angle = Math.atan((y2-y1)/(x2-x1));
+				line.style.top = y1 + 0.5*length*Math.sin(angle) + "px";
+				line.style.left = x1 - 0.5*length*(1 - Math.cos(angle)) + "px";
+				line.style.MozTransform = line.style.WebkitTransform = 
+				    line.style.OTransform= "rotate(" + angle + "rad)";
+			}
+			return line;
+		}
+		
+		// create red line
+		function createRedLine(x1, y1, x2, y2)
+		{
+			if (x2 < x1)
+			{
+				var temp = x1;
+				x1 = x2;
+				x2 = temp;
+				temp = y1;
+				y1 = y2;
+				y2 = temp;
+			}
+			var line = document.createElement("div");
+			line.className = "redline";
+			var length = Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
+			line.style.width = length + "px";
+
+			if (isIE)
+			{
+				line.style.top = (y2 > y1) ? y1 + "px" : y2 + "px";
+				line.style.left = x1 + "px";
+				var nCos = (x2-x1)/length;
+				var nSin = (y2-y1)/length;
+				line.style.filter = "progid:DXImageTransform.Microsoft." +
+				    "Matrix(sizingMethod='auto expand', M11=" + nCos + ", M12="
+				    + -1*nSin + ", M21=" + nSin + ", M22=" + nCos + ")";
+			}
+			else
+			{
+				var angle = Math.atan((y2-y1)/(x2-x1));
+				line.style.top = y1 + 0.5*length*Math.sin(angle) + "px";
+				line.style.left = x1 - 0.5*length*(1 - Math.cos(angle)) + "px";
+				line.style.MozTransform = line.style.WebkitTransform = 
+				    line.style.OTransform= "rotate(" + angle + "rad)";
+			}
+			return line;
+		}
+		
+		// create blue line
+		function createBlueLine(x1, y1, x2, y2)
+		{
+			if (x2 < x1)
+			{
+				var temp = x1;
+				x1 = x2;
+				x2 = temp;
+				temp = y1;
+				y1 = y2;
+				y2 = temp;
+			}
+			var line = document.createElement("div");
+			line.className = "blueline";
+			var length = Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
+			line.style.width = length + "px";
+
+			if (isIE)
+			{
+				line.style.top = (y2 > y1) ? y1 + "px" : y2 + "px";
+				line.style.left = x1 + "px";
+				var nCos = (x2-x1)/length;
+				var nSin = (y2-y1)/length;
+				line.style.filter = "progid:DXImageTransform.Microsoft." +
+				    "Matrix(sizingMethod='auto expand', M11=" + nCos + ", M12="
+				    + -1*nSin + ", M21=" + nSin + ", M22=" + nCos + ")";
+			}
+			else
+			{
+				var angle = Math.atan((y2-y1)/(x2-x1));
+				line.style.top = y1 + 0.5*length*Math.sin(angle) + "px";
+				line.style.left = x1 - 0.5*length*(1 - Math.cos(angle)) + "px";
+				line.style.MozTransform = line.style.WebkitTransform = 
+				    line.style.OTransform= "rotate(" + angle + "rad)";
+			}
+			return line;
+		}
+
+		function init()
+		{
+			var webElement = document.getElementById("web");
+
+            // 1st picture coordinates
+            var x1 = 300;
+            var y1 = 175;
+            
+            // 2nd picture coordinates
+            var x2 = 100;
+            var y2 = 500;
+            
+            // 3rd picture coordinates
+            var x3 = 850;
+            var y3 = 875;
+            
+            // 4th picture coordinates
+            var x4 = 650;
+            var y4 = 50;
+            
+            // 5th picture coordinates
+            var x5 = 150;
+            var y5 = 325;
+            
+            // 6th picture coordinates
+            var x6 = 1000;
+            var y6 = 175;
+            
+            // 7th picture coordinates
+            var x7 = 1150;
+            var y7 = 700;
+            
+            // 8th picture coordinates
+            var x8 = 450;
+            var y8 = 75;
+            
+            // 9th picture coordinates
+            var x9 = 450;
+            var y9 = 875;
+            
+            // 10th picture coordinates
+            var x10 = 650;
+            var y10 = 925;
+            
+            // 11th picture coordinates
+            var x11 = 1150;
+            var y11 = 325;
+            
+            // 12th picture coordinates
+            var x12 = 450;
+            var y12 = 325;
+            
+            // 13th picture coordinates
+            var x13 = 450;
+            var y13 = 475;
+            
+            // 14th picture coordinates
+            var x14 = 150;
+            var y14 = 700;
+            
+            // 15th picture coordinates
+            var x15 = 850;
+            var y15 = 75;
+                        
+            // 16th picture coordinates
+            var x16 = 1250;
+            var y16 = 500;
+            
+            // 17th picture coordinates
+            var x17 = 300;
+            var y17 = 800;
+            
+            // 18th picture coordinates
+            var x18 = 1000;
+            var y18 = 800;
+            
+            // three to fourteen (Berlin to Cape)
+            webElement.appendChild(createLine(x3, y3, x14, y14));
+			
+            // ten to fourteen (Rhodes to Cape)
+            webElement.appendChild(createLine(x10, y10, x14, y14));
+			
+            // ten to fifteen (Rhodes to Free Trade)
+            webElement.appendChild(createLine(x10, y10, x15, y15));
+			
+            // sixteen to four (Burden to Diamond Jubilee)
+            webElement.appendChild(createLine(x16, y16, x4, y4));
+			
+            // three to seventeen (Berlin to Congo)
+            webElement.appendChild(createLine(x3, y3, x17, y17));
+			
+            // six to seventeen (Livingstone to Congo)
+            webElement.appendChild(createLine(x6, y6, x17, y17));
+			
+            // nine to seventeen (Conrad to Congo)
+            webElement.appendChild(createLine(x9, y9, x17, y17));
+			
+            // eighteen to two (Suez to Scramble)
+            webElement.appendChild(createLine(x18, y18, x2, y2));
+			
+            // eighteen to fifteen (Suez to Free Trade)
+            webElement.appendChild(createLine(x18, y18, x15, y15));
+			
+            // eighteen to fourteen (Suez to Cape)
+            webElement.appendChild(createLine(x18, y18, x14, y14));
+			
+            // eighteen to three (Suez to Berlin)
+            webElement.appendChild(createLine(x18, y18, x3, y3));
+			
+            // one to eight (Sepoy to EIC)
+            webElement.appendChild(createLine(x1, y1, x8, y8));
+		
+            // one to five (Sepoy to Queen)
+            webElement.appendChild(createLine(x1, y1, x5, y5));
+			
+            // two to seventeen (Scramble to Congo)
+            webElement.appendChild(createLine(x2, y2, x17, y17));
+			
+            // two to three (Scramble to Berlin)
+            webElement.appendChild(createLine(x2, y2, x3, y3));
+			
+            // two to nine (Scramble to Conrad)
+            webElement.appendChild(createLine(x2, y2, x9, y9));
+			
+            // two to ten (Scramble to Rhodes)
+            webElement.appendChild(createLine(x2, y2, x10, y10));
+			
+            // two to eleven (Scramble to Chamberlain)
+            webElement.appendChild(createLine(x2, y2, x11, y11));
+			
+            // four to five (Diamond to Queen)
+            webElement.appendChild(createLine(x4, y4, x5, y5));
+			
+            // four to sixteen (Diamond to Burden)
+            webElement.appendChild(createLine(x4, y4, x16, y16));
+			
+            // six to five (Livingstone to Queen)
+            webElement.appendChild(createLine(x6, y6, x5, y5));
+			
+            // six to fifteen (Livingstone to Free Trade)
+            webElement.appendChild(createLine(x6, y6, x15, y15));
+			
+            // seven to eight (Burton to East India Company)
+            webElement.appendChild(createLine(x7, y7, x8, y8));
+			
+            // eight to five (EIC to Queen)
+            webElement.appendChild(createLine(x8, y8, x5, y5));
+			
+            // eight to fifteen (EIC to Free Trade)
+            webElement.appendChild(createLine(x8, y8, x15, y15));
+			
+            // nine to seventeen (Conrad to Congo)
+            webElement.appendChild(createLine(x9, y9, x17, y17));
+			
+            // nine to fourteen (Conrad to Cape)
+            webElement.appendChild(createLine(x9, y9, x14, y14));
+			
+            // nine to sixteen (Conrad to Burden)
+            webElement.appendChild(createLine(x9, y9, x16, y16));
+			
+            // ten to sixteen (Rhodes to Burden)
+            webElement.appendChild(createLine(x10, y10, x16, y16));
+			
+            // eleven to fifteen (Chamberlain to Free Trade)
+            webElement.appendChild(createLine(x11, y11, x15, y15));
+			
+            // twelve to one (Liberty to Sepoy)
+            webElement.appendChild(createBlueLine(x12, y12, x1, y1));
+			
+            // twelve to fifteen (Liberty to Free Trade)
+            webElement.appendChild(createBlueLine(x12, y12, x15, y15));
+			
+            // twelve to seventeen (Liberty to Congo)
+            webElement.appendChild(createBlueLine(x12, y12, x17, y17));
+			
+            // twelve to five (Liberty to Queen)
+            webElement.appendChild(createBlueLine(x12, y12, x5, y5));
+			
+            // twelve to six (Liberty to Livingstone)
+            webElement.appendChild(createBlueLine(x12, y12, x6, y6));
+			
+            // twelve to seven (Liberty to Burton)
+            webElement.appendChild(createBlueLine(x12, y12, x7, y7));
+			
+            // twelve to eight (Liberty to EIC)
+            webElement.appendChild(createBlueLine(x12, y12, x8, y8));
+			
+            // thirteen to two (NI to Scramble)
+            webElement.appendChild(createRedLine(x13, y13, x2, y2));
+			
+            // thirteen to sixteen (NI to Burden)
+            webElement.appendChild(createRedLine(x13, y13, x16, y16));
+			
+            // thirteen to seventeen (NI to Congo)
+            webElement.appendChild(createRedLine(x13, y13, x17, y17));
+			
+            // thirteen to one (NI to Sepoy)
+            webElement.appendChild(createRedLine(x13, y13, x1, y1));
+			
+            // thirteen to five (NI to Queen)
+            webElement.appendChild(createRedLine(x13, y13, x5, y5));
+			
+            // thirteen to six (NI to Livingstone)
+            webElement.appendChild(createRedLine(x13, y13, x6, y6));
+			
+            // thirteen to seven (NI to Burton)
+            webElement.appendChild(createRedLine(x13, y13, x7, y7));
+			
+            // thirteen to eight (NI to EIC)
+            webElement.appendChild(createRedLine(x13, y13, x8, y8));
+			
+            // thirteen to nine (NI to Conrad)
+            webElement.appendChild(createRedLine(x13, y13, x9, y9));
+			
+            // thirteen to ten (NI to Rhodes)
+            webElement.appendChild(createRedLine(x13, y13, x10, y10));
+			
+            // thirteen to eleven (NI to Chamberlain)
+            webElement.appendChild(createRedLine(x13, y13, x11, y11));
+        }
+	</script>
+  </head>
+
+  <body>
+    <div class="logo">
+        <a href="index.html"><img id ="logo" src="images/logo.jpg" 
+        alt="LOGO"><h1 class="logo_text">
+        Chain of Change</h1></a>
+    </div>
+    
+    <div class="border_hor"></div>
+    <div class="border_ver"></div>
+
+    <div class="links">
+      <h1>
+        <a class="link_box" href= "index.html"> Home </a>
+        <a class="link_box" href= "events/list.html"> Events </a>
+        <a class="link_box" href= "people-groups/list.html"> 
+          People/Groups </a>
+        <a class="link_box" href= "ideals/list.html"> Ideals </a>
+        <a class="link_box" href= "places/list.html"> Places </a>
+        <a class="active_link_box" href= "web.html"> Link Web </a>
+      </h1>
+    </div>
+    
+    <div class="citations">
+      <p><h4>The web is both a physical representation of the ties between 
+          events, people, ideals and places, and a tool for navigating the 
+          site.  Each picture is a hyperlink to its corresponding page.  
+          Explore the connections and draw your own between the concepts 
+          outlined.  Blue lines indicate links to Empire of Liberty, red lines
+          indicate links to New Imperialism and black lines denote links 
+          between concepts.</h4>
+       <p><h3 class="disclaimer">Please note:</h3>
+          <h4>Due to the large amount of javaScript involved in creating the
+          Link Web, the browser sometimes has trouble printing out the links
+          upon the first load. If the lines do not show up, simply refresh the
+          page and they should load.
+          </h4>
+    </div>
+    
+    <div class="body">
+      <div class="title">
+        <h2>Link Web</h2>
+      </div>
+      
+      <div class="web">
+        <!- Draw Lines ->
+        <div id="web"></div>
+        
+        <!- Circle ->
+        <div class="four">
+          <a href="events/diamondJubilee.html">
+            <img id="web" src="images/diamondJubilee.jpg" alt="Diamond Jubilee">
+            <h4 class="web_text">Diamond Jubilee</h4></a>
+        </div>
+        <div class="eight">
+          <a href="people-groups/eastIndiaCompany.html">
+            <img id="web" src="images/eastIndiaCompany.jpg" alt="British East India Company">
+            <h4 class="web_text">British East India Company</h4></a>
+        </div>
+        <div class="fifteen">
+          <a href="ideals/freeTrade.html">
+            <img id="web" src="images/freeTrade.jpg" alt="Free Trade">
+            <h4 class="web_text">Free Trade</h4></a>
+        </div>
+        <div class="one">
+          <a href="events/sepoy.html">
+            <img id="web" src="images/sepoy.jpg" alt="Sepoy Rebellion">
+            <h4 class="web_text">Sepoy Rebellion</h4></a>
+        </div>
+        <div class="six">
+          <a href="people-groups/livingstone.html">
+            <img id="web" src="images/livingstone.jpg" alt="David Livingstone">
+            <h4 class="web_text">David Livingstone</h4></a>
+        </div>
+        <div class="five">
+          <a href="people-groups/queenVictoria.html">
+            <img id="web" src="images/queenVictoria.jpg" alt="Queen Victoria">
+            <h4 class="web_text">Queen Victoria</h4></a>
+        </div>
+        <div class="eleven">
+          <a href="people-groups/chamberlain.html">
+            <img id="web" src="images/chamberlain.jpg" alt="Joseph Chamberlain">
+            <h4 class="web_text">Joseph Chamberlain</h4></a>
+        </div>
+        <div class="two">
+          <a href="events/scramble.html">
+            <img id="web" src="images/scramble.jpg" alt="Scramble for Africa">
+            <h4 class="web_text">Scramble for Africa</h4></a>
+        </div>
+        <div class="sixteen">
+          <a href="ideals/burden.html">
+            <img id="web" src="images/burden.jpg" alt="The White Man's Burden">
+            <h4 class="web_text">The White Man's Burden</h4></a>
+        </div>
+        <div class="fourteen">
+          <a href="ideals/capeCairo.html">
+            <img id="web" src="images/capeCairo.jpg" alt="Cape to Cairo">
+            <h4 class="web_text">Cape to Cairo</h4></a>
+        </div>
+        <div class="seven">
+          <a href="people-groups/burton.html">
+            <img id="web" src="images/burton.jpg" alt="Richard Burton">
+            <h4 class="web_text">Richard Burton</h4></a>
+        </div>
+        <div class="seventeen">
+          <a href="places/congo.html">
+            <img id="web" src="images/congo.jpg" alt="Congo Free State">
+            <h4 class="web_text">Congo Free State</h4></a>
+        </div>
+        <div class="eighteen">
+          <a href="places/suezCanal.html">
+            <img id="web" src="images/suezCanal.jpg" alt="Suez Canal">
+            <h4 class="web_text">Suez Canal</h4></a>
+        </div>
+        <div class="nine">
+          <a href="people-groups/conrad.html">
+            <img id="web" src="images/conrad.jpg" alt="Joseph Conrad">
+            <h4 class="web_text">Joseph Conrad</h4></a>
+        </div>
+        <div class="three">
+          <a href="events/berlinConference.html">
+            <img id="web" src="images/berlinConference.jpg" alt="Berlin Conference">
+            <h4 class="web_text">Berlin Conference</h4></a>
+        </div>
+        <div class="ten">
+          <a href="people-groups/rhodes.html">
+            <img id="web" src="images/rhodes.jpg" alt="Cecil Rhodes">
+            <h4 class="web_text">Cecil Rhodes</h4></a>
+        </div>
+        
+        <!- Empire of Liberty ->
+        <div class="twelve">
+          <a href="ideals/empireOfLiberty.html">
+            <img id="web" src="images/empireOfLiberty.jpg" alt="Empire of Liberty">
+            <h4 class="web_text">Empire of Liberty</h4></a>
+        </div>
+        
+        <!- New Imperialism ->
+        <div class="thirteen">
+          <a href="ideals/newImperialism.html">
+            <img id="web" src="images/newImperialism.jpg" alt="New Imperialism">
+            <h4 class="web_text">New Imperialism</h4></a>
+        </div>
+      </div>
+    </div>
+    
+    
+  </body>
+  
+</html>
